@@ -30,11 +30,14 @@ InitTime  = 2
 
 
 
+
+
 sock.EventHandler = function(sock, evt, err)
   if evt == TcpSocket.Events.Connected then
     print( "socket connected" )
-   InitTimer:Start(InitTime)
-   PollTimer:Start(poltime)
+   --InitTimer:Start(InitTime)
+   --PollTimer:Start(poltime)
+   -- init()
   elseif evt == TcpSocket.Events.Reconnect then
     print( "socket reconnecting..." )
   elseif evt == TcpSocket.Events.Data then
@@ -85,38 +88,38 @@ Controls.ShowName3.EventHandler = function ()
 end
 
 play1.EventHandler = function ()
-  send{"authenticate 1"}
+  send("authenticate 1")
   send("load ".."\x22"..show1.."\x22")
   send("wait") 
   send("run")
 end
 
 stop1.EventHandler = function ()
-  send{"authenticate 1"}
+  send("authenticate 1")
   send("halt ".."\x22"..show1.."\x22")
 end
 
 play2.EventHandler = function ()
-  send{"authenticate 1"}
+  send("authenticate 1")
   send("load ".."\x22"..show2.."\x22")
   send("wait") 
   send("run")
 end
 
 stop1.EventHandler = function ()
-  send{"authenticate 1"}
+  send("authenticate 1")
   send("halt ".."\x22"..show2.."\x22")
 end
 
 play3.EventHandler = function ()
-  ssend{"authenticate 1"}
+  send("authenticate 1")
   send("load ".."\x22"..show3.."\x22")
   send("wait") 
   send("run")
 end
 
 stop1.EventHandler = function ()
-  send{"authenticate 1"}
+  send("authenticate 1")
   send("halt ".."\x22"..show3.."\x22")
 end
 
@@ -125,12 +128,6 @@ function loadnames()
   show2 = name2.String
   show3 = name3.String
 end      
-
-function init()
-  send("authenticate 1")  
-  print("authenticated")
-end
-
 
 loadnames()
 
