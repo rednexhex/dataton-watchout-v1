@@ -1,6 +1,6 @@
 -- Dataton Watchout Control
 -- by Matty
--- August 2024
+-- October 2024
 
 -- Information block for the plugin
 --[[ #include "info.lua" ]]
@@ -22,12 +22,6 @@ end
 function GetProperties()
   local props = {}
   --[[ #include "properties.lua" ]]
-  return props
-end
-
--- Optional function to update available properties when properties are altered by the user
-function RectifyProperties(props)
-  --[[ #include "rectify_properties.lua" ]]
   return props
 end
 

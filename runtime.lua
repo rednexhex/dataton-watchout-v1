@@ -19,7 +19,7 @@ sock.WriteTimeout = 0
 sock.ReconnectTimeout = 5
 
 -- Constants
-EOL = "\n"                       -- End of line character as defined in device's API
+EOL = "\r\n"                       -- End of line character as defined in device's API
 EOLCharacter = TcpSocket.EOL.Lf  -- EOL Character lookup for TCPSocket ReadLine
 iter = 1
 
@@ -66,7 +66,7 @@ end
 
 function send(cmd)
          --print("snd: ",cmd..Tail)
-         sock:Write(cmd)
+         sock:Write(cmd..EOL)
 end
 
 
@@ -89,9 +89,7 @@ end
 
 play1.EventHandler = function ()
   send("authenticate 1")
-  send("load ".."\x22"..show1.."\x22")
-  send("wait") 
-  send("run")
+  send("gotoControlCue \x22"..show1.."\x22")
 end
 
 stop1.EventHandler = function ()
@@ -101,9 +99,7 @@ end
 
 play2.EventHandler = function ()
   send("authenticate 1")
-  send("load ".."\x22"..show2.."\x22")
-  send("wait") 
-  send("run")
+  send("gotoControlCue \x22"..show2.."\x22")
 end
 
 stop1.EventHandler = function ()
@@ -113,9 +109,7 @@ end
 
 play3.EventHandler = function ()
   send("authenticate 1")
-  send("load ".."\x22"..show3.."\x22")
-  send("wait") 
-  send("run")
+  send("gotoControlCue \x22"..show3.."\x22")
 end
 
 stop1.EventHandler = function ()

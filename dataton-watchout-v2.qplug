@@ -1,13 +1,13 @@
 -- Dataton Watchout Control
 -- by Matty
--- August 2024
+-- October 2024
 
 -- Information block for the plugin
 PluginInfo = {
   Name = "Matty~Dataton~Watchout",
-  Version = "1.0",
-  BuildVersion = "2.3.1.75",
-  Id ="57fb018e-2917-4d28-8ab4-7f65396816fb",
+  Version = "2.0",
+  BuildVersion = "2.1.1.4",
+  Id ="57fb018e-2917-4d28-8ab4-7f34567816fb",
   Author = "Matty",
   Description = "TCP/Telnet Control of Watchout Software"
 }
@@ -40,14 +40,6 @@ function GetProperties()
     Choices = {"None", "Tx/Rx", "Diet Coke", "Tx", "Rx", "Function Calls", "All"},
     Value = "All"
   })
-  return props
-end
-
--- Optional function to update available properties when properties are altered by the user
-function RectifyProperties(props)
-  if props.plugin_show_debug.Value == false then 
-    props["Debug Print"].IsHidden = true 
-  end
   return props
 end
 
@@ -363,7 +355,7 @@ if Controls then
   sock.ReconnectTimeout = 5
   
   -- Constants
-  EOL = "\n"                       -- End of line character as defined in device's API
+  EOL = "\r\n"                       -- End of line character as defined in device's API
   EOLCharacter = TcpSocket.EOL.Lf  -- EOL Character lookup for TCPSocket ReadLine
   iter = 1
   
@@ -410,7 +402,7 @@ if Controls then
   
   function send(cmd)
            --print("snd: ",cmd..Tail)
-           sock:Write(cmd)
+           sock:Write(cmd..EOL)
   end
   
   
@@ -433,9 +425,7 @@ if Controls then
   
   play1.EventHandler = function ()
     send("authenticate 1")
-    send("load ".."\x22"..show1.."\x22")
-    send("wait") 
-    send("run")
+    send("gotoControlCue \x22"..show1.."\x22")
   end
   
   stop1.EventHandler = function ()
@@ -445,9 +435,7 @@ if Controls then
   
   play2.EventHandler = function ()
     send("authenticate 1")
-    send("load ".."\x22"..show2.."\x22")
-    send("wait") 
-    send("run")
+    send("gotoControlCue \x22"..show2.."\x22")
   end
   
   stop1.EventHandler = function ()
@@ -457,9 +445,7 @@ if Controls then
   
   play3.EventHandler = function ()
     send("authenticate 1")
-    send("load ".."\x22"..show3.."\x22")
-    send("wait") 
-    send("run")
+    send("gotoControlCue \x22"..show3.."\x22")
   end
   
   stop1.EventHandler = function ()
