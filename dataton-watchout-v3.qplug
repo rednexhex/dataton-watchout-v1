@@ -5,9 +5,9 @@
 -- Information block for the plugin
 PluginInfo = {
   Name = "Matty~Dataton~Watchout",
-  Version = "2.0",
-  BuildVersion = "2.1.1.4",
-  Id ="57fb018e-2917-4d28-8ab4-7f34567816fb",
+  Version = "3.0",
+  BuildVersion = "3.1.1.5",
+  Id ="35124f57-4188-4de3-99b1-91068121ae0d",
   Author = "Matty",
   Description = "TCP/Telnet Control of Watchout Software"
 }
@@ -370,6 +370,8 @@ if Controls then
   
   sock.EventHandler = function(sock, evt, err)
     if evt == TcpSocket.Events.Connected then
+    sockon = true
+    print("sockon")
       print( "socket connected" )
      --InitTimer:Start(InitTime)
      --PollTimer:Start(poltime)
@@ -386,6 +388,8 @@ if Controls then
         message = sock:ReadLine(TcpSocket.EOL.Any)
       end
     elseif evt == TcpSocket.Events.Closed then
+      sockon = false
+      print("sockoff")
       print( "socket closed by remote" )
     elseif evt == TcpSocket.Events.Error then
       print( "socket closed due to error", err )
@@ -401,8 +405,10 @@ if Controls then
   
   
   function send(cmd)
-           --print("snd: ",cmd..Tail)
-           sock:Write(cmd..EOL)
+      sock:Connect(address.String, port.Value)
+      if(sockon == true)
+      sock:Write(cmd..EOL)
+      sock:Disconnect(address.String, port.Value)
   end
   
   
@@ -461,5 +467,5 @@ if Controls then
   
   loadnames()
   
-  sock:Connect(address.String, port.Value)
+  --sock:Connect(address.String, port.Value)
 end

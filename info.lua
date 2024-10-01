@@ -1,8 +1,8 @@
 PluginInfo = {
   Name = "Matty~Dataton~Watchout",
-  Version = "2.0",
-  BuildVersion = "2.1.1.4",
-  Id ="57fb018e-2917-4d28-8ab4-7f34567816fb",
+  Version = "3.0",
+  BuildVersion = "3.1.1.5",
+  Id ="35124f57-4188-4de3-99b1-91068121ae0d",
   Author = "Matty",
   Description = "TCP/Telnet Control of Watchout Software"
 }

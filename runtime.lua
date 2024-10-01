@@ -34,6 +34,8 @@ InitTime  = 2
 
 sock.EventHandler = function(sock, evt, err)
   if evt == TcpSocket.Events.Connected then
+  sockon = true
+  print("sockon")
     print( "socket connected" )
    --InitTimer:Start(InitTime)
    --PollTimer:Start(poltime)
@@ -50,6 +52,8 @@ sock.EventHandler = function(sock, evt, err)
       message = sock:ReadLine(TcpSocket.EOL.Any)
     end
   elseif evt == TcpSocket.Events.Closed then
+    sockon = false
+    print("sockoff")
     print( "socket closed by remote" )
   elseif evt == TcpSocket.Events.Error then
     print( "socket closed due to error", err )
@@ -65,8 +69,10 @@ end
 
 
 function send(cmd)
-         --print("snd: ",cmd..Tail)
-         sock:Write(cmd..EOL)
+    sock:Connect(address.String, port.Value)
+    if(sockon == true)
+    sock:Write(cmd..EOL)
+    sock:Disconnect(address.String, port.Value)
 end
 
 
@@ -125,4 +131,4 @@ end
 
 loadnames()
 
-sock:Connect(address.String, port.Value)
+--sock:Connect(address.String, port.Value)
