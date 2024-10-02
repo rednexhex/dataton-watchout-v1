@@ -69,10 +69,8 @@ end
 
 
 function send(cmd)
-    sock:Connect(address.String, port.Value)
-    if(sockon == true)
     sock:Write(cmd..EOL)
-    sock:Disconnect(address.String, port.Value)
+   -- sock:Disconnect(address.String, port.Value)
 end
 
 
@@ -131,4 +129,4 @@ end
 
 loadnames()
 
---sock:Connect(address.String, port.Value)
+sock:Connect(address.String, port.Value)
