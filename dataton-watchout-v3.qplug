@@ -6,7 +6,7 @@
 PluginInfo = {
   Name = "Matty~Dataton~Watchout",
   Version = "3.0",
-  BuildVersion = "3.1.1.5",
+  BuildVersion = "3.1.1.21",
   Id ="35124f57-4188-4de3-99b1-91068121ae0d",
   Author = "Matty",
   Description = "TCP/Telnet Control of Watchout Software"
@@ -59,7 +59,7 @@ function GetControls(props)
     ControlUnit = "Integer",
     Min = 1,
     Max = 65535,
-    DefaultValue = 3040,
+    DefaultValue = 3039,
     Count = 1
   })
   
@@ -370,9 +370,7 @@ if Controls then
   
   sock.EventHandler = function(sock, evt, err)
     if evt == TcpSocket.Events.Connected then
-    sockon = true
-    print("sockon")
-      print( "socket connected" )
+        print( "socket connected" )
      --InitTimer:Start(InitTime)
      --PollTimer:Start(poltime)
      -- init()
@@ -405,10 +403,21 @@ if Controls then
   
   
   function send(cmd)
-      sock:Connect(address.String, port.Value)
-      if(sockon == true)
       sock:Write(cmd..EOL)
-      sock:Disconnect(address.String, port.Value)
+      print(cmd..EOL)
+     -- sock:Disconnect(address.String, port.Value)
+  end
+  
+  --[[
+  sock.Connected = function ()
+    -- sock has connected now, so data can be sent
+    send(cmd)
+    sock:Disconnect()
+  end
+  ]]--
+  
+  address.EventHandler = function ( )
+    sock:Connect(address.String, port.Value)
   end
   
   
@@ -431,33 +440,38 @@ if Controls then
   
   play1.EventHandler = function ()
     send("authenticate 1")
-    send("gotoControlCue \x22"..show1.."\x22")
+    send("gotoControlCue "..show1)
+    send("run")
   end
   
   stop1.EventHandler = function ()
     send("authenticate 1")
-    send("halt ".."\x22"..show1.."\x22")
+    send("halt")
+    send("gotoControlCue "..show1)
   end
   
   play2.EventHandler = function ()
     send("authenticate 1")
-    send("gotoControlCue \x22"..show2.."\x22")
+    send("gotoControlCue "..show2)
+    send("run")
   end
   
-  stop1.EventHandler = function ()
+  stop2.EventHandler = function ()
     send("authenticate 1")
-    send("halt ".."\x22"..show2.."\x22")
+    send("halt")
+    send("gotoControlCue "..show2)
   end
   
   play3.EventHandler = function ()
     send("authenticate 1")
-    send("gotoControlCue \x22"..show3.."\x22")
+    send("gotoControlCue "..show3)
+    send("run")
   end
   
-  stop1.EventHandler = function ()
+  stop3.EventHandler = function ()
     send("authenticate 1")
-    send("halt ".."\x22"..show3.."\x22")
-  end
+    send("halt")
+    send("gotoControlCue "..show3)
   
   function loadnames()
     show1 = name1.String
@@ -467,5 +481,5 @@ if Controls then
   
   loadnames()
   
-  --sock:Connect(address.String, port.Value)
+  sock:Connect(address.String, port.Value)
 end

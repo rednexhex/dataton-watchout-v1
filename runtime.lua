@@ -34,9 +34,7 @@ InitTime  = 2
 
 sock.EventHandler = function(sock, evt, err)
   if evt == TcpSocket.Events.Connected then
-  sockon = true
-  print("sockon")
-    print( "socket connected" )
+      print( "socket connected" )
    --InitTimer:Start(InitTime)
    --PollTimer:Start(poltime)
    -- init()
@@ -70,7 +68,20 @@ end
 
 function send(cmd)
     sock:Write(cmd..EOL)
+    print(cmd..EOL)
    -- sock:Disconnect(address.String, port.Value)
+end
+
+--[[
+sock.Connected = function ()
+  -- sock has connected now, so data can be sent
+  send(cmd)
+  sock:Disconnect()
+end
+]]--
+
+address.EventHandler = function ( )
+  sock:Connect(address.String, port.Value)
 end
 
 
@@ -93,33 +104,38 @@ end
 
 play1.EventHandler = function ()
   send("authenticate 1")
-  send("gotoControlCue \x22"..show1.."\x22")
+  send("gotoControlCue "..show1)
+  send("run")
 end
 
 stop1.EventHandler = function ()
   send("authenticate 1")
-  send("halt ".."\x22"..show1.."\x22")
+  send("halt")
+  send("gotoControlCue "..show1)
 end
 
 play2.EventHandler = function ()
   send("authenticate 1")
-  send("gotoControlCue \x22"..show2.."\x22")
+  send("gotoControlCue "..show2)
+  send("run")
 end
 
-stop1.EventHandler = function ()
+stop2.EventHandler = function ()
   send("authenticate 1")
-  send("halt ".."\x22"..show2.."\x22")
+  send("halt")
+  send("gotoControlCue "..show2)
 end
 
 play3.EventHandler = function ()
   send("authenticate 1")
-  send("gotoControlCue \x22"..show3.."\x22")
+  send("gotoControlCue "..show3)
+  send("run")
 end
 
-stop1.EventHandler = function ()
+stop3.EventHandler = function ()
   send("authenticate 1")
-  send("halt ".."\x22"..show3.."\x22")
-end
+  send("halt")
+  send("gotoControlCue "..show3)
 
 function loadnames()
   show1 = name1.String

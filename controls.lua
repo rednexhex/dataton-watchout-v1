@@ -11,7 +11,7 @@ table.insert(ctrls, {
   ControlUnit = "Integer",
   Min = 1,
   Max = 65535,
-  DefaultValue = 3040,
+  DefaultValue = 3039,
   Count = 1
 })
 
