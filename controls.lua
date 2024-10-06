@@ -24,17 +24,24 @@ table.insert(ctrls, {
   Count = 1
 })
 table.insert(ctrls, {
-  Name = "Show1Play",
+  Name = "Show1Cue",
   ControlType = "Button",
   ButtonType = "Trigger",
   Count = 1
 })
 table.insert(ctrls, {
-  Name = "Show1Stop",
+  Name = "Show1Halt",
   ControlType = "Button",
   ButtonType = "Trigger",
   Count = 1
 })
+table.insert(ctrls, {
+  Name = "Show1Run",
+  ControlType = "Button",
+  ButtonType = "Trigger",
+  Count = 1
+})
+
 
 -- Show 2
 
@@ -45,13 +52,19 @@ table.insert(ctrls, {
   Count = 1
 })
 table.insert(ctrls, {
-  Name = "Show2Play",
+  Name = "Show2Cue",
   ControlType = "Button",
   ButtonType = "Trigger",
   Count = 1
 })
 table.insert(ctrls, {
-  Name = "Show2Stop",
+  Name = "Show2Halt",
+  ControlType = "Button",
+  ButtonType = "Trigger",
+  Count = 1
+})
+table.insert(ctrls, {
+  Name = "Show2Run",
   ControlType = "Button",
   ButtonType = "Trigger",
   Count = 1
@@ -66,13 +79,19 @@ table.insert(ctrls, {
   Count = 1
 })
 table.insert(ctrls, {
-  Name = "Show3Play",
+  Name = "Show3Cue",
   ControlType = "Button",
   ButtonType = "Trigger",
   Count = 1
 })
 table.insert(ctrls, {
-  Name = "Show3Stop",
+  Name = "Show3Halt",
+  ControlType = "Button",
+  ButtonType = "Trigger",
+  Count = 1
+})
+table.insert(ctrls, {
+  Name = "Show3Run",
   ControlType = "Button",
   ButtonType = "Trigger",
   Count = 1

@@ -2,14 +2,17 @@
 address = Controls.IPAddress
 port = Controls.Port
 name1 = Controls.ShowName1
-play1 = Controls.Show1Play
-stop1 = Controls.Show1Stop
+cue1 = Controls.Show1Cue
+halt1 = Controls.Show1Halt
+run1 = Controls.Show1Run
 name2 = Controls.ShowName2
-play2 = Controls.Show2Play
-stop2 = Controls.Show2Stop
+cue2 = Controls.Show2Cue
+halt2 = Controls.Show2Halt
+run2 = Controls.Show2Run
 name3 = Controls.ShowName3
-play3 = Controls.Show3Play
-stop3 = Controls.Show3Stop
+cue3 = Controls.Show3Cue
+halt3 = Controls.Show3Halt
+run3 = Controls.Show3Run
 
 
 ----  Sockets   ---
@@ -102,40 +105,54 @@ Controls.ShowName3.EventHandler = function ()
   print(show3)
 end
 
-play1.EventHandler = function ()
-  send("authenticate 1")
-  send("gotoControlCue "..show1)
-  send("run")
-end
-
-stop1.EventHandler = function ()
+cue1.EventHandler = function ()
   send("authenticate 1")
   send("halt")
   send("gotoControlCue "..show1)
 end
 
-play2.EventHandler = function ()
+halt1.EventHandler = function ()
   send("authenticate 1")
-  send("gotoControlCue "..show2)
+  send("halt")
+end
+
+run1.EventHandler = function ()
+  send("authenticate 1")
   send("run")
 end
 
-stop2.EventHandler = function ()
+cue2.EventHandler = function ()
   send("authenticate 1")
   send("halt")
   send("gotoControlCue "..show2)
 end
 
-play3.EventHandler = function ()
+halt2.EventHandler = function ()
   send("authenticate 1")
-  send("gotoControlCue "..show3)
+  send("halt")
+  send("gotoControlCue "..show2)
+end
+
+run2.EventHandler = function ()
+  send("authenticate 1")
   send("run")
 end
 
-stop3.EventHandler = function ()
+cue3.EventHandler = function ()
   send("authenticate 1")
   send("halt")
   send("gotoControlCue "..show3)
+end
+
+halt3.EventHandler = function ()
+  send("authenticate 1")
+  send("halt")
+end
+
+run3.EventHandler = function ()
+  send("authenticate 1")
+  send("run")
+end
 
 function loadnames()
   show1 = name1.String

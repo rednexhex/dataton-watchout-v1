@@ -5,8 +5,8 @@
 -- Information block for the plugin
 PluginInfo = {
   Name = "Matty~Dataton~Watchout",
-  Version = "3.0",
-  BuildVersion = "3.1.1.21",
+  Version = "3.1",
+  BuildVersion = "3.1.1.14",
   Id ="35124f57-4188-4de3-99b1-91068121ae0d",
   Author = "Matty",
   Description = "TCP/Telnet Control of Watchout Software"
@@ -72,17 +72,24 @@ function GetControls(props)
     Count = 1
   })
   table.insert(ctrls, {
-    Name = "Show1Play",
+    Name = "Show1Cue",
     ControlType = "Button",
     ButtonType = "Trigger",
     Count = 1
   })
   table.insert(ctrls, {
-    Name = "Show1Stop",
+    Name = "Show1Halt",
     ControlType = "Button",
     ButtonType = "Trigger",
     Count = 1
   })
+  table.insert(ctrls, {
+    Name = "Show1Run",
+    ControlType = "Button",
+    ButtonType = "Trigger",
+    Count = 1
+  })
+  
   
   -- Show 2
   
@@ -93,13 +100,19 @@ function GetControls(props)
     Count = 1
   })
   table.insert(ctrls, {
-    Name = "Show2Play",
+    Name = "Show2Cue",
     ControlType = "Button",
     ButtonType = "Trigger",
     Count = 1
   })
   table.insert(ctrls, {
-    Name = "Show2Stop",
+    Name = "Show2Halt",
+    ControlType = "Button",
+    ButtonType = "Trigger",
+    Count = 1
+  })
+  table.insert(ctrls, {
+    Name = "Show2Run",
     ControlType = "Button",
     ButtonType = "Trigger",
     Count = 1
@@ -114,13 +127,19 @@ function GetControls(props)
     Count = 1
   })
   table.insert(ctrls, {
-    Name = "Show3Play",
+    Name = "Show3Cue",
     ControlType = "Button",
     ButtonType = "Trigger",
     Count = 1
   })
   table.insert(ctrls, {
-    Name = "Show3Stop",
+    Name = "Show3Halt",
+    ControlType = "Button",
+    ButtonType = "Trigger",
+    Count = 1
+  })
+  table.insert(ctrls, {
+    Name = "Show3Run",
     ControlType = "Button",
     ButtonType = "Trigger",
     Count = 1
@@ -161,7 +180,7 @@ function GetControlLayout(props)
   table.insert(graphics,{
     Type="Image",
     Image=datatonlogo,
-    Position={150,220},
+    Position={230,220},
     Size={175,88}
     })
   
@@ -210,27 +229,35 @@ function GetControlLayout(props)
     FontSize = 12,
     HTextAlign = "Left"
   })
-  layout["Show1Play"] = {
-    PrettyName = "Show1Play",
-    Legend = "Play",
+  layout["Show1Cue"] = {
+    PrettyName = "Show1Cue",
+    Legend = "Cue",
     FontSize = 12,
     Style = "Button",
     Position = {50, 70},
     Size = {50, 20}
   }
-  layout["Show1Stop"] = {
-    PrettyName = "Show1Stop",
-    Legend = "Stop",
+  layout["Show1Halt"] = {
+    PrettyName = "Show1Halt",
+    Legend = "Halt",
     FontSize = 12,
     Style = "Button",
     Position = {100, 70},
+    Size = {50, 20}
+  }
+  layout["Show1Run"] = {
+    PrettyName = "Show1Run",
+    Legend = "Run",
+    FontSize = 12,
+    Style = "Button",
+    Position = {150, 70},
     Size = {50, 20}
   }
   
   table.insert(graphics, {
     Type = "Text",
     Text = "Name",
-    Position = {160, 70},
+    Position = {220, 70},
     Size = {40, 16},
     FontSize = 12,
     HTextAlign = "Left"
@@ -239,7 +266,7 @@ function GetControlLayout(props)
   layout["ShowName1"] = {
     PrettyName = "ShowName1",
     Style = "Text",
-    Position = {200, 70},
+    Position = {260, 70},
     Size = {160, 20}
   }
   
@@ -253,27 +280,36 @@ function GetControlLayout(props)
     FontSize = 12,
     HTextAlign = "Left"
   })
-  layout["Show2Play"] = {
-    PrettyName = "Show2Play",
-    Legend = "Play",
+  layout["Show2Cue"] = {
+    PrettyName = "Show2Cue",
+    Legend = "Cue",
     FontSize = 12,
     Style = "Button",
     Position = {50, 120},
     Size = {50, 20}
   }
-  layout["Show2Stop"] = {
-    PrettyName = "Show2Stop",
-    Legend = "Stop",
+  layout["Show2Halt"] = {
+    PrettyName = "Show2Halt",
+    Legend = "Halt",
     FontSize = 12,
     Style = "Button",
     Position = {100, 120},
     Size = {50, 20}
   }
+  layout["Show2Run"] = {
+    PrettyName = "Show2Run",
+    Legend = "Run",
+    FontSize = 12,
+    Style = "Button",
+    Position = {150, 120},
+    Size = {50, 20}
+  }
+  
   
   table.insert(graphics, {
     Type = "Text",
     Text = "Name",
-    Position = {160, 120},
+    Position = {220, 120},
     Size = {40, 16},
     FontSize = 12,
     HTextAlign = "Left"
@@ -282,7 +318,7 @@ function GetControlLayout(props)
   layout["ShowName2"] = {
     PrettyName = "ShowName2",
     Style = "Text",
-    Position = {200, 120},
+    Position = {260, 120},
     Size = {160, 20}
   }
   
@@ -297,36 +333,44 @@ function GetControlLayout(props)
     FontSize = 12,
     HTextAlign = "Left"
   })
-  layout["Show3Play"] = {
-    PrettyName = "Show3Play",
-    Legend = "Play",
+  layout["Show3Cue"] = {
+    PrettyName = "Show3Cue",
+    Legend = "Cue",
     FontSize = 12,
     Style = "Button",
     Position = {50, 170},
     Size = {50, 20}
   }
-  layout["Show3Stop"] = {
-    PrettyName = "Show3Stop",
-    Legend = "Stop",
+  layout["Show3Halt"] = {
+    PrettyName = "Show3Halt",
+    Legend = "Halt",
     FontSize = 12,
     Style = "Button",
     Position = {100, 170},
+    Size = {50, 20}
+  }
+  layout["Show3Run"] = {
+    PrettyName = "Show3Run",
+    Legend = "Run",
+    FontSize = 12,
+    Style = "Button",
+    Position = {150, 170},
     Size = {50, 20}
   }
   
   table.insert(graphics, {
     Type = "Text",
     Text = "Name",
-    Position = {160, 170},
+    Position = {220, 170},
     Size = {40, 16},
     FontSize = 12,
     HTextAlign = "Left"
   })
   
   layout["ShowName3"] = {
-    PrettyName = "ShowName1",
+    PrettyName = "ShowName3",
     Style = "Text",
-    Position = {200, 170},
+    Position = {260, 170},
     Size = {160, 20}
   }
   return layout, graphics
@@ -338,14 +382,17 @@ if Controls then
   address = Controls.IPAddress
   port = Controls.Port
   name1 = Controls.ShowName1
-  play1 = Controls.Show1Play
-  stop1 = Controls.Show1Stop
+  cue1 = Controls.Show1Cue
+  halt1 = Controls.Show1Halt
+  run1 = Controls.Show1Run
   name2 = Controls.ShowName2
-  play2 = Controls.Show2Play
-  stop2 = Controls.Show2Stop
+  cue2 = Controls.Show2Cue
+  halt2 = Controls.Show2Halt
+  run2 = Controls.Show2Run
   name3 = Controls.ShowName3
-  play3 = Controls.Show3Play
-  stop3 = Controls.Show3Stop
+  cue3 = Controls.Show3Cue
+  halt3 = Controls.Show3Halt
+  run3 = Controls.Show3Run
   
   
   ----  Sockets   ---
@@ -438,40 +485,54 @@ if Controls then
     print(show3)
   end
   
-  play1.EventHandler = function ()
-    send("authenticate 1")
-    send("gotoControlCue "..show1)
-    send("run")
-  end
-  
-  stop1.EventHandler = function ()
+  cue1.EventHandler = function ()
     send("authenticate 1")
     send("halt")
     send("gotoControlCue "..show1)
   end
   
-  play2.EventHandler = function ()
+  halt1.EventHandler = function ()
     send("authenticate 1")
-    send("gotoControlCue "..show2)
+    send("halt")
+  end
+  
+  run1.EventHandler = function ()
+    send("authenticate 1")
     send("run")
   end
   
-  stop2.EventHandler = function ()
+  cue2.EventHandler = function ()
     send("authenticate 1")
     send("halt")
     send("gotoControlCue "..show2)
   end
   
-  play3.EventHandler = function ()
+  halt2.EventHandler = function ()
     send("authenticate 1")
-    send("gotoControlCue "..show3)
+    send("halt")
+    send("gotoControlCue "..show2)
+  end
+  
+  run2.EventHandler = function ()
+    send("authenticate 1")
     send("run")
   end
   
-  stop3.EventHandler = function ()
+  cue3.EventHandler = function ()
     send("authenticate 1")
     send("halt")
     send("gotoControlCue "..show3)
+  end
+  
+  halt3.EventHandler = function ()
+    send("authenticate 1")
+    send("halt")
+  end
+  
+  run3.EventHandler = function ()
+    send("authenticate 1")
+    send("run")
+  end
   
   function loadnames()
     show1 = name1.String

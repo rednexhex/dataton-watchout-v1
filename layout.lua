@@ -27,7 +27,7 @@ table.insert(graphics,{
 table.insert(graphics,{
   Type="Image",
   Image=datatonlogo,
-  Position={150,220},
+  Position={230,220},
   Size={175,88}
   })
 
@@ -76,27 +76,35 @@ table.insert(graphics, {
   FontSize = 12,
   HTextAlign = "Left"
 })
-layout["Show1Play"] = {
-  PrettyName = "Show1Play",
-  Legend = "Play",
+layout["Show1Cue"] = {
+  PrettyName = "Show1Cue",
+  Legend = "Cue",
   FontSize = 12,
   Style = "Button",
   Position = {50, 70},
   Size = {50, 20}
 }
-layout["Show1Stop"] = {
-  PrettyName = "Show1Stop",
-  Legend = "Stop",
+layout["Show1Halt"] = {
+  PrettyName = "Show1Halt",
+  Legend = "Halt",
   FontSize = 12,
   Style = "Button",
   Position = {100, 70},
+  Size = {50, 20}
+}
+layout["Show1Run"] = {
+  PrettyName = "Show1Run",
+  Legend = "Run",
+  FontSize = 12,
+  Style = "Button",
+  Position = {150, 70},
   Size = {50, 20}
 }
 
 table.insert(graphics, {
   Type = "Text",
   Text = "Name",
-  Position = {160, 70},
+  Position = {220, 70},
   Size = {40, 16},
   FontSize = 12,
   HTextAlign = "Left"
@@ -105,7 +113,7 @@ table.insert(graphics, {
 layout["ShowName1"] = {
   PrettyName = "ShowName1",
   Style = "Text",
-  Position = {200, 70},
+  Position = {260, 70},
   Size = {160, 20}
 }
 
@@ -119,27 +127,36 @@ table.insert(graphics, {
   FontSize = 12,
   HTextAlign = "Left"
 })
-layout["Show2Play"] = {
-  PrettyName = "Show2Play",
-  Legend = "Play",
+layout["Show2Cue"] = {
+  PrettyName = "Show2Cue",
+  Legend = "Cue",
   FontSize = 12,
   Style = "Button",
   Position = {50, 120},
   Size = {50, 20}
 }
-layout["Show2Stop"] = {
-  PrettyName = "Show2Stop",
-  Legend = "Stop",
+layout["Show2Halt"] = {
+  PrettyName = "Show2Halt",
+  Legend = "Halt",
   FontSize = 12,
   Style = "Button",
   Position = {100, 120},
   Size = {50, 20}
 }
+layout["Show2Run"] = {
+  PrettyName = "Show2Run",
+  Legend = "Run",
+  FontSize = 12,
+  Style = "Button",
+  Position = {150, 120},
+  Size = {50, 20}
+}
+
 
 table.insert(graphics, {
   Type = "Text",
   Text = "Name",
-  Position = {160, 120},
+  Position = {220, 120},
   Size = {40, 16},
   FontSize = 12,
   HTextAlign = "Left"
@@ -148,7 +165,7 @@ table.insert(graphics, {
 layout["ShowName2"] = {
   PrettyName = "ShowName2",
   Style = "Text",
-  Position = {200, 120},
+  Position = {260, 120},
   Size = {160, 20}
 }
 
@@ -163,35 +180,43 @@ table.insert(graphics, {
   FontSize = 12,
   HTextAlign = "Left"
 })
-layout["Show3Play"] = {
-  PrettyName = "Show3Play",
-  Legend = "Play",
+layout["Show3Cue"] = {
+  PrettyName = "Show3Cue",
+  Legend = "Cue",
   FontSize = 12,
   Style = "Button",
   Position = {50, 170},
   Size = {50, 20}
 }
-layout["Show3Stop"] = {
-  PrettyName = "Show3Stop",
-  Legend = "Stop",
+layout["Show3Halt"] = {
+  PrettyName = "Show3Halt",
+  Legend = "Halt",
   FontSize = 12,
   Style = "Button",
   Position = {100, 170},
+  Size = {50, 20}
+}
+layout["Show3Run"] = {
+  PrettyName = "Show3Run",
+  Legend = "Run",
+  FontSize = 12,
+  Style = "Button",
+  Position = {150, 170},
   Size = {50, 20}
 }
 
 table.insert(graphics, {
   Type = "Text",
   Text = "Name",
-  Position = {160, 170},
+  Position = {220, 170},
   Size = {40, 16},
   FontSize = 12,
   HTextAlign = "Left"
 })
 
 layout["ShowName3"] = {
-  PrettyName = "ShowName1",
+  PrettyName = "ShowName3",
   Style = "Text",
-  Position = {200, 170},
+  Position = {260, 170},
   Size = {160, 20}
 }
